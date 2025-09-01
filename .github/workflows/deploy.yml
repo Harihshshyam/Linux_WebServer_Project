@@ -1,21 +1,12 @@
-<<<<<<< HEAD
-name: Deploy to Server
-
-on:
-  push:
-    branches: [ "main" ]
-=======
 name: Deploy Linux Web Project
 
 on:
   push:
-    branches: [ main ]
->>>>>>> ad3866431fe5e51122608c010a5ae31ab18d904c
+    branches: [ "main" ]
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-<<<<<<< HEAD
 
     steps:
       - name: Checkout code
@@ -31,15 +22,3 @@ jobs:
       - name: Deploy to server
         run: |
           ssh ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} "cd /var/www/html && git pull origin main"
-=======
-    steps:
-      - uses: actions/checkout@v3
-      - name: Copy files to server
-        uses: appleboy/scp-action@v0.1.6
-        with:
-          host: ${{ secrets.SERVER_IP }}
-          username: ${{ secrets.SERVER_USER }}
-          key: ${{ secrets.SERVER_SSH_KEY }}
-          source: "."
-          target: "/var/www/html"
->>>>>>> ad3866431fe5e51122608c010a5ae31ab18d904c
